@@ -47,17 +47,6 @@ namespace task10_3
             return true;
         }
 
-        static bool TryInputNumberHundered(string message, out int number)
-        {
-            Console.WriteLine(message);
-            var input = Console.ReadLine();
-
-            if ((!int.TryParse(input, out number)) | (number <= 0) | (number <= 100))
-            {
-                Console.WriteLine("Ошибка ввода");
-                return false;
-            }
-            return true;
-        }
+        
     }
 }
