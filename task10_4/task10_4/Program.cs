@@ -42,6 +42,7 @@ namespace task10_4
            
             Console.WriteLine();
             Console.WriteLine("Минимальная цифра в числе = "+minNum + ", максимальная = " + maxNum);
+            Console.WriteLine("Максимальное число больше минимального на "+ (maxNum-minNum));
             Console.ReadKey();
         }
 
