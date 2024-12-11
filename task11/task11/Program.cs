@@ -10,9 +10,8 @@ namespace task11
     {
         static void Main(string[] args)
         {
-            int n,intPi;
+            int n,intPi,m;
             string subPi;
-
 
             Console.WriteLine("Введите количество элементов массива");
             if (!int.TryParse(Console.ReadLine(), out n)||(n < 0))
@@ -36,6 +35,22 @@ namespace task11
             PrintArray(numbers);
             Console.WriteLine();
             PrintArray(SubtractFromNine(numbers));
+            Console.WriteLine();
+            Console.WriteLine("Введите число m");
+            if (!int.TryParse(Console.ReadLine(), out m) || (m < 0))
+            {
+                Console.WriteLine("Ошибка ввода");
+                Console.ReadKey();
+                return;
+            }
+
+            int mAmount = CountM(SubtractFromNine(numbers), m);
+            if ((mAmount == 2)||(mAmount == 3)||(mAmount == 4)) 
+            Console.WriteLine($"Число {m} встречается в полученном массиве {mAmount} раза");
+            else
+                Console.WriteLine($"Число {m} встречается в полученном массиве {mAmount} раз");
+            Console.WriteLine();
+            PrintArray(ConvertToOnesAndZeros(SubtractFromNine(numbers)));
             Console.ReadKey();
         }
 
@@ -59,6 +74,32 @@ namespace task11
             for (int i=0; i<array.Length;i++)
             {
                 result[i] = 9-array[i];
+            }
+            return result;
+        }
+        static int CountM(int[] array,int numberToFind)
+        {
+          
+            int count = 0;
+            foreach (var element in array)
+            {
+                if (element == numberToFind)
+                count++;
+            }
+            return count;
+        }
+
+        static int[] ConvertToOnesAndZeros(int[] array)
+        {
+            int[] result = new int[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if ((array[i]%2) == 0)
+                        
+                result[i] = 0;
+            
+                    else
+                    result[i] = 1; ;
             }
             return result;
         }
