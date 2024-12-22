@@ -50,6 +50,12 @@ namespace task12
 
                 Console.WriteLine($"Нарушение на строке {rowNumber + 1} и столбце {colNumber + 1}");
             else Console.WriteLine("Все элементы столбцов идут в порядке убывания");
+            Console.WriteLine();
+            for (int i = 0; i < m; i++)
+            {
+                double average = CalculateRowAverage(matrix, i);
+                Console.WriteLine($"Среднее арифметическое строки {i + 1}: {average}");
+            }
             Console.ReadKey();
         }
 
@@ -90,6 +96,15 @@ namespace task12
                     }
             }
             return (-1, -1);
+        }
+        static double CalculateRowAverage(int[,] matrix, int rowIndex)
+        {
+            int sum = 0;
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                sum += matrix[rowIndex, j];
+            }
+            return (double)sum / matrix.GetLength(1);
         }
     }
 }
